@@ -3,6 +3,10 @@ module SessionsHelper
         session[:user_id] = user.id
     end
 
+    def current_user?(user)
+        user == current_user
+    end
+
     def current_user
         if session[:user_id]
             if @current_user.nil?
@@ -14,7 +18,7 @@ module SessionsHelper
     end
 
     def logged_in?
-        current_user.nil?
+        !current_user.nil?
     end
 
     def log_out
