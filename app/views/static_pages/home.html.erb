@@ -40,6 +40,11 @@
                   <% if current_user?(tweet.user) %>
                     <%= link_to"編集", edit_tweet_path(tweet) %>
                     <%= link_to"削除", tweet, method: :delete, data: {comfirm: "削除しますか？"} %>
+                    <% if tweet.fav?(current_user) %>
+                      <%= link_to"いいね解除", tweet, method: :destroy %>
+                    <% else %>
+                      <%= link_to"いいね", tweet, method: :create %>
+                    <% end %>
                   <% end %>
                 </span>
             </li>
