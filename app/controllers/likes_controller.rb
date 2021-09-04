@@ -1,17 +1,17 @@
 class LikesController < ApplicationController
-    before_action :correct_user, only: [:create, :destroy]
+    # before_action :correct_user, only: [:create, :destroy]
     before_action :logged_in_user, only: [:create, :destroy]
 
     def create
       @tweet = Tweet.find(params[:tweet_id])
       @tweet.fav(current_user)
-      redirect_to user_path
+      redirect_to root_url
     end
 
     def destroy
       @tweet = Like.find(params[:id]).tweet
       @tweet.unfav(current_user)
-      redirect_to user_path
+      redirect_to root_url
     end
 
     private
