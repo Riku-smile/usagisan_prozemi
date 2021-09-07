@@ -72,4 +72,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Add heroku
 group :production do
   gem 'pg'
+
+gem 'font-awesome-sass'
 end

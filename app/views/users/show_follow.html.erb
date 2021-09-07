@@ -7,14 +7,14 @@
         </section>
         <section class="stats">
             <div class="stats">
-                <a href="<%= following_user_path(@user) %>">
-                    <strong id="follower" class="stat">
+                <a href="<%= following_user_path(@user) %>" class="stat__follow">
+                    <strong id="follower" class="stat__count">
                     <%= @user.follower.count %>
                     </strong>
                     フォロー
                 </a>
-                <a href="<%= followers_user_path(@user) %>">
-                    <strong id="followed" class="stat">
+                <a href="<%= followers_user_path(@user) %>" class="stat__follow">
+                    <strong id="followed" class="stat" class="stat__count">
                     <%= @user.followed.count %>
                     </strong>
                     フォロワー
