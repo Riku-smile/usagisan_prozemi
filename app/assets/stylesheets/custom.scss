@@ -85,6 +85,7 @@ p {
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+  /* ポインタを置いたときの色が変わる */
   &:hover {
     color: white;
     text-decoration: none;
@@ -121,6 +122,7 @@ footer {
 
 input,
 textarea,
+select,
 .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -205,7 +207,6 @@ aside {
 .users.follow {
   padding: 0;
 }
-
 .remindtweets {
   padding-left: 15px;
   border: double 5px #333;
