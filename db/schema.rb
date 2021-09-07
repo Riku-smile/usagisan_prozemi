@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_072530) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "remind_datetime"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 

@@ -5,14 +5,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tweets = @user.tweets
-    # # 取得したユーザーに結びついている全ての投稿を取得し、@user_postsに代入する。
-    # @user_tweets = @user.tweets
-    # # 変数を定義し、0を代入。
-    # @likes_count = 0
-    # # countメソッドを使い、１つの投稿に結びつくイイねを予め定義しておいた@likes_countに足していく。
-    # @user_tweets.each do |tweet|
-    #   @likes_count += tweet.likes.count
-    # end
   end
 
   def new
