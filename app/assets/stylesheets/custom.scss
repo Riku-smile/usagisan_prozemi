@@ -24,7 +24,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  background-color: #FDEFEF;
+  background-color: #fdefef;
   color: #333;
   padding-top: 60px;
 }
@@ -78,7 +78,7 @@ p {
 /* header */
 
 header.navbar {
-  background-color: #F4DFD0;
+  background-color: #f4dfd0;
 }
 
 #logo {
@@ -100,10 +100,11 @@ header.navbar {
 /* footer */
 
 footer {
-  background-color: #F4DFD0;
+  background-color: #f4dfd0;
   color: #777;
   margin-top: 45px;
-  padding-top: 5px;
+  padding: 20px;
+  text-align: center;
   width: 100vw;
 }
 
@@ -153,7 +154,7 @@ input {
     margin-left: 60px;
   }
   .timestamp {
-    color: #BB8760;
+    color: #bb8760;
     display: block;
     margin-left: 60px;
   }
@@ -175,14 +176,14 @@ aside {
     float: left;
     padding: 0 10px;
     border-left: 1px solid $gray-lighter;
-    color: #CDBBA7;
+    color: #cdbba7;
     &:first-child {
       padding-left: 0;
       border: 0;
     }
     &:hover {
       text-decoration: none;
-      color: #BB8760;
+      color: #bb8760;
     }
   }
   strong {
@@ -192,7 +193,7 @@ aside {
 
 .stat {
   &__follow {
-    color: #CDBBA7;
+    color: #cdbba7;
   }
   &__count {
     color: #333;
@@ -226,12 +227,16 @@ aside {
 }
 
 .btn-primary {
-  background: #BB8760;
+  background: #bb8760;
   &:hover {
-    background: #CDBBA7;
+    background: #cdbba7;
   }
 }
 
 .icon {
   margin: 0 5px;
+}
+
+.jumbotron {
+  background-color: inherit;
 }

@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @tweet = current_user.tweets.build
       @tweets = Tweet.all.order(created_at: "DESC").paginate(page: params[:page], per_page: 10)
+      @remind_tweets = Tweet.all.order(remind_datetime: "ASC")
     end
   end
 

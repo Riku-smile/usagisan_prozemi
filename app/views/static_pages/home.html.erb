@@ -32,19 +32,20 @@
       <section class="remindtweets">
         <% if @tweets.any? %>
           <ol class="tweets">
-          <% @tweets = @tweets.order(remind_datetime: "ASC") %>
-          <% @tweets.each do |tweet| %>
+          <% @count = 0 %>
+          <% @remind_tweets.each do |tweet| %>
             <% if current_user.following?(tweet.user) || current_user == tweet.user %>
             <% if tweet.remind_datetime %>
-              <% if tweet.remind_datetime >= Time.zone.now - 1800 %>
+            <% if tweet.remind_datetime >= Time.zone.now %>
+              <% break if @count > 4 %>
+              <% @count += 1 %>
               <ol class="tweets">
                 <li id="tweet-<%= tweet.id %>">
                   <span class="user"><%= link_to tweet.user.name, tweet.user %></span>
                   <span class="content"><%= tweet.content %></span>
                   <span class="remind"><%= tweet.remind_datetime %></span>
-                
                   <span class="timestamp">
-                    投稿日 <%= time_ago_in_words(tweet.created_at) %> 前 
+                    投稿日 <%= time_ago_in_words(tweet.created_at) %> 前
                     <% if current_user?(tweet.user) %>
                       <%= link_to edit_tweet_path(tweet) do %>
                         <i class="fas fa-edit icon icon"></i>
@@ -63,7 +64,7 @@
                         <i class="far fa-heart icon"></i>
                       <% end %>
                       <%= tweet.likes.count %>
-                    <% end %>                 
+                    <% end %>
                   </span>
                 </li>
               <% end %>
@@ -108,7 +109,7 @@
                         <i class="far fa-heart icon"></i>
                       <% end %>
                       <%= tweet.likes.count %>
-                    <% end %>                  
+                    <% end %>
                 </span>
               </div>
             </li>

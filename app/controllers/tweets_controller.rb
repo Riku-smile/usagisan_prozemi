@@ -8,7 +8,7 @@ class TweetsController < ApplicationController
             flash[:success] = "投稿されました"
             redirect_to root_url
         else
-            render root_url
+            redirect_to root_url
         end
     end
 
