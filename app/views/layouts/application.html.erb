@@ -4,9 +4,9 @@
     <title>RABBIT TWEETS</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   </head>
 
   <body>
@@ -16,7 +16,6 @@
         <nav>
           <ul class="nav navbar-nav navbar-right" style="display:flex;">
             <li><%= link_to "Home",   root_path %></li>
-            <li><%= link_to "Help",   help_path %></li>
             <% if logged_in? %>
               <li><%= link_to "Users", '#' %></li>
               <li class="dropdown">
@@ -45,12 +44,7 @@
     <% end %>
       <%= yield %>
       <footer class="footer">
-        <nav>
-          <ul>
-            <li><%= link_to "About",   about_path %></li>
-            <li><%= link_to "Contact Us", contact_path %></li>
-          </ul>
-        </nav>
+        &copy; うさぎさんチーム. 2021-
       </footer>
       <%= debug(params) if Rails.env.development? %>
     </div>
