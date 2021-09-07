@@ -121,7 +121,6 @@ footer {
 
 input,
 textarea,
-select,
 .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -151,6 +150,9 @@ input {
       display: block;
       padding: 5px 0;
     }
+  }
+  .remind {
+    margin-left: 60px;
   }
   .timestamp {
     color: $gray-light;
@@ -202,4 +204,15 @@ aside {
 
 .users.follow {
   padding: 0;
+}
+
+.remindtweets {
+  padding-left: 15px;
+  border: double 5px #333;
+  border-radius: 10px;
+}
+
+.tweetss {
+  border-left: double 4px #808080;
+  padding-left: 15px;
 }

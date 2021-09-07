@@ -5,8 +5,6 @@ class Tweet < ApplicationRecord
   belongs_to :user
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
-
-
   # 現在のユーザーがいいねしてたらtrueを返す
   def fav?(user)
     fav_users.include?(user)

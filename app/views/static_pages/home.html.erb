@@ -22,8 +22,52 @@
           <% end %>
           <div class="field">
             <%= f.text_area :content, placeholder: "こんにちは" %>
+            <label>remind time</label>
+            <%= f.datetime_field :remind_datetime %>
           </div>
           <%= f.submit "投稿", class: "btn btn-primary" %>
+        <% end %>
+      </section>
+      <h1>Remind Tweet</h1>
+      <section class="remindtweets">
+        <% if @tweets.any? %>
+          <ol class="tweets">
+          <% @tweets = @tweets.order(remind_datetime: "ASC") %>
+          <% @tweets.each do |tweet| %>
+            <% if current_user.following?(tweet.user) || current_user == tweet.user %>
+            <% if tweet.remind_datetime %>
+              <% if tweet.remind_datetime >= Time.zone.now - 1800 %>
+              <ol class="tweets">
+                <li id="tweet-<%= tweet.id %>">
+                  <span class="user"><%= link_to tweet.user.name, tweet.user %></span>
+                  <span class="content"><%= tweet.content %></span>
+                
+                  <span class="remind"><%= tweet.remind_datetime %></span>
+                
+                  <span class="timestamp">
+                    投稿日 <%= time_ago_in_words(tweet.created_at) %> 前
+                    <% if current_user?(tweet.user) %>
+                      <%= link_to"編集", edit_tweet_path(tweet) %>
+                      <%= link_to"削除", tweet, method: :delete, data: {comfirm: "削除しますか？"} %>
+                      <% if tweet.fav?(current_user) %>
+                      <%= link_to"いいね解除", tweet_like_path(tweet.id, tweet_id:tweet.id), method: :delete %><%= tweet.likes.count %>
+                    <% else %>
+                      <%= link_to"いいね", tweet_likes_path(tweet.id), method: :create %><%= tweet.likes.count %>
+                    <% end %>
+                  <% else %>
+                    <% if tweet.fav?(current_user) %>
+                      <%= link_to"いいね解除", tweet_like_path(tweet.id, tweet_id:tweet.id), method: :delete %><%= tweet.likes.count %>
+                    <% else %>
+                      <%= link_to"いいね", tweet_likes_path(tweet.id), method: :create %><%= tweet.likes.count %>
+                    <% end %>
+                    <% end %>
+                  </span>
+                </li>
+              <% end %>
+            <% end %>
+            <% end %>
+          <% end %>
+          </ol>
         <% end %>
       </section>
     </aside>
@@ -33,8 +77,12 @@
         <ol class="tweets">
             <% @tweets.each do |tweet| %>
             <li id="tweet-<%= tweet.id %>">
+            <div class="tweetss">
                 <span class="user"><%= link_to tweet.user.name, tweet.user %></span>
                 <span class="content"><%= tweet.content %></span>
+                
+                <span class="remind"><%= tweet.remind_datetime %></span>
+                
                 <span class="timestamp">
                   投稿日 <%= time_ago_in_words(tweet.created_at) %> 前
                   <% if current_user?(tweet.user) %>
@@ -53,6 +101,7 @@
                     <% end %>
                   <% end %>
                 </span>
+              </div>
             </li>
             <% end %>
         </ol>
