@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
 
     private
         def tweet_params
-            params.require(:tweet).permit(:content)
+            params.require(:tweet).permit(:content, :remind_datetime)
         end
         def correct_user
             @tweet = current_user.tweets.find_by(id: params[:id])
